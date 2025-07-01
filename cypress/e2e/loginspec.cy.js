@@ -5,23 +5,36 @@ const selectoresList = {
   passwordFiend: "[name='password']",
   loginNutton: "[type= 'submit']",
   sectionTitleTopBar: ".oxd-topbar-header-breadcrumb-module",
+  deshboardGrid: ".orangehrm-dashboard-grid",
   wrongCredentialAlert: "[role='alert']",
+}
+
+const userData = {
+  userSuccess: {
+  username: 'Admin',
+  password: 'admin123'
+  },
+userFail: {
+  username: 'teste',
+  password: 'teste'
+
+}
 }
 
 
   it('Login Success', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectoresList.usernameField).type('Admin')
-    cy.get(selectoresList.passwordFiend).type('admin123')
+    cy.get(selectoresList.usernameField).type(userData.userSuccess.username)
+    cy.get(selectoresList.passwordFiend).type(userData.userSuccess.password)
     cy.get(selectoresList.loginNutton).click()    
     cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-    cy.get(selectoresList.sectionTitleTopBar).contains('Dashboard')
+    cy.get(selectoresList.deshboardGrid)
   })
 
   it('Login Success', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectoresList.usernameField).type('test')
-    cy.get(selectoresList.passwordFiend).type('test')
+    cy.get(selectoresList.usernameField).type(userData.userFail.username)
+    cy.get(selectoresList.passwordFiend).type(userData.userFail.password)
     cy.get(selectoresList.loginNutton).click()
     cy.get(selectoresList.wrongCredentialAlert)
   })
