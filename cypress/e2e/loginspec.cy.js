@@ -1,3 +1,4 @@
+import userData from '../fixtures/users/userData.json'
 describe('Orange HRM tests', () => {
 
 const selectoresList = {
@@ -8,19 +9,6 @@ const selectoresList = {
   deshboardGrid: ".orangehrm-dashboard-grid",
   wrongCredentialAlert: "[role='alert']",
 }
-
-const userData = {
-  userSuccess: {
-  username: 'Admin',
-  password: 'admin123'
-  },
-userFail: {
-  username: 'teste',
-  password: 'teste'
-
-}
-}
-
 
   it('Login Success', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
