@@ -13,7 +13,8 @@ const selectoresList = {
   lastNameField: "[name='lastName']",
   genericField: ".oxd-input--active",
   dateCloseButton: ".--close",
-  submitButton: "[type='submit']"
+  submitButton: "[type='submit']",
+  genericCombobox: ".oxd-select-text-input"
 
 }
 
@@ -34,11 +35,12 @@ const selectoresList = {
     cy.get(selectoresList.genericField).eq(4).clear().type('Emploid')
     cy.get(selectoresList.genericField).eq(5).clear().type('Others')
     cy.get(selectoresList.genericField).eq(6).clear().type('2025-03-10')
-    cy.get(selectoresList.dateCloseButton).click()
+    cy.get(selectoresList.dateCloseButton).click()    
+    cy.get(':nth-child(5) > :nth-child(1) > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text--after > .oxd-icon').click()
+    cy.get('.oxd-select-dropdown > :nth-child(27)').click()
+    cy.get(':nth-child(5) > :nth-child(1) > :nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text-input').click()
+    cy.get('.oxd-select-dropdown > :nth-child(3)').click()
     cy.get(selectoresList.submitButton).eq(0).click()
-    
-    
-
   })
 
   it('Login Fail', () => {
